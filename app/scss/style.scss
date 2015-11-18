@@ -1,0 +1,258 @@
+﻿
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:300');
+@import url('http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
+/* alla färger importeras*/
+/*@import "reset-color";*/
+/*reset all color*/
+/* color & position setting*/
+$background:#0080FF;
+$white: #FBFBEF;
+$darkblue:(#0101DF , 20%);
+$link-color: (#39b54a, 90%);
+$bokning: #FF4000;
+$text: #190B07;
+$font-color: #DF0101;
+$marg: 20px;
+/* mixin to most all funktion*/
+@mixin container-line(){
+	display:column;
+	margin: 1em 0;
+	}
+@mixin co-card-line(){
+  margin: 0 1%;
+  padding: 1em;
+  background: $background;
+}
+@mixin menu-format1(){
+  display: none;
+  width: 100%;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+@mixin menu-format2(){
+ display: block;
+  padding: 1em;
+  background: $background;
+  color: $white;
+  text-decoration: none;
+  border-right: 1px solid $darkblue; 
+}
+
+@mixin desktop-format(){
+ 
+    display: flex;
+    flex-direction: row;
+}
+@mixin desktop-flex(){
+     position: relative;
+    text-align: center;
+ 
+    flex: 1;
+}
+@mixin label-format(){
+    position: relative;
+  display: block;
+  min-height: 2em;
+  padding: .45em;
+  font-size: 1.1em;
+  margin: 0;
+  cursor: pointer;
+  background: #005292;
+  line-height: 2em;
+  color: $font-color;
+}
+@mixin label-format-after(){
+  position: absolute;
+  right: 1em;
+  top: .2em;
+  content: "\2261";
+  font-size: 1.8em;
+  color: white;
+}
+@mixin menu-position(){
+      display: none !important;
+    position: absolute;
+    top: 3.0625em;
+    left: 0;
+    display: block;
+    width: 12.5em;
+    z-index: 200;
+}
+@mixin container-search(){
+  width: 223px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+  border-style: solid;
+  color: $background - 25 ;
+}
+body {
+  background-image: url(http://png.clipart.me/graphics/previews/211/dumbbell-workouts-for-sports-vector-illustration-eps-10-isolated-on-white-background_211587937.jpg);
+  margin: 25px;
+  -webkit-animation: bugfix infinite 1s;
+  
+}
+
+@-webkit-keyframes bugfix {
+  from {
+    padding: 0;
+  }
+  to {
+    padding: 0;
+  }
+}
+/*börja setting för menu bar*/
+#nav {
+  position: relative;
+}
+#nav ul {
+  @include menu-format1();
+}
+#nav ul li a {
+  @include menu-format2();
+}
+#nav ul li a:hover {
+  background: $bokning;
+}
+#nav ul li:last-of-type a {
+  border-right: 0px;
+}
+#nav ul li ul li a {
+  padding-left: 1.5em;
+}
+#nav ul li ul li ul li a {
+  padding-left: 3.125em;
+}
+#nav input.trigger {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+#nav input.trigger:checked ~ ul, #nav input.trigger:checked ~ ul li ul {
+  display: block !important;
+}
+.box{
+  margin: 100px auto;
+
+}
+.container-1{
+@include container-search();
+}
+/*setting för fyra container som ge information */
+.container{
+@include container-line();
+	}
+
+.container-card{
+	display:column;
+	}	
+
+.container * {
+  box-sizing: border-box;
+}
+.container-card {
+ @include co-card-line();
+}
+.container-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1em;
+  display: block;
+}
+.container-text {
+  color: $white;
+  margin-bottom: 1em;
+
+}
+.container-cta {
+  color: $white;
+  background: $bokning - 2;
+  text-decoration: none;
+  padding: 10px;
+  display: inline-block;
+}	
+@media (min-width: 48em) {
+  #nav input.trigger:checked ~ ul, #nav input.trigger:checked ~ ul li ul {
+   @include desktop-format();
+  }
+}
+#nav label {
+@include label-format();
+}
+#nav label:after {
+  @include label-format-after();
+}
+@media (min-width: 48em) {
+  #nav ul {
+  @include desktop-format();
+  }
+  #nav ul li {
+ @include desktop-flex();
+  }
+  #nav ul li ul {
+@include menu-position();
+  }
+  #nav ul li ul li {
+    text-align: left;
+  }
+  #nav ul li ul li ul {
+    z-index: 300;
+    top: 0px;
+    left: 12.4em;
+  }
+  #nav ul li ul li ul li a {
+    padding-left: 30px !important;
+  }
+  #nav ul li:hover > ul {
+    display: block !important;
+  }
+  #nav label {
+    display: none;
+  }
+}
+/*två text style som använder sen i texten*/
+.text-style1{
+ margin: ($marg * 3) 0;
+  font-weight: 300;
+  font-size: 300%;
+  color: $text;
+  text-align: center; 
+}
+.text-style2{
+  margin: ($marg ) 0;
+  font-weight: 200;
+  font-size: 120%; 
+   color: $text;
+  background-color: $white - 3;
+}
+h1 {
+ @extend .text-style1; 
+}
+h2 {
+ @extend .text-style2;
+}
+h3 {
+ @extend .text-style2;
+ color: $text;
+ text-align: center;  
+}
+p {
+  margin: 0 0 $marg 0;
+   color: $text - 10;
+}	
+	
+	
+@media (min-width: 48em){				
+.container {
+  display: flex;
+}
+.container-card {
+  flex-basis: 23%;
+  display: flex;
+  flex-flow: column wrap;
+}
+.container-text {
+ flex: 1;
+}									
+}
