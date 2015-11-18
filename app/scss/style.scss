@@ -3,6 +3,7 @@
 @import url('http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
 /* alla färger importeras*/
 @import "reset-color";
+
 /* mixin to most all funktion*/
 @mixin container-line(){
 	display:column;
@@ -28,41 +29,16 @@
   text-decoration: none;
   border-right: 1px solid $darkblue; 
 }
-@mixin flexbox-format(){
-   /* older flexbox */
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -moz-box-orient: horizontal;
-    box-orient: horizontal;
-    /* newer flexbox */
-    display: flex;
-    flex-direction: row;
-}
+
 @mixin desktop-format(){
-    /* older flexbox */
-    display: -ms-flex;
-    flex-direction: -ms-row;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -moz-box-orient: horizontal;
-    box-orient: horizontal;
-    /* newer flexbox */
+ 
     display: flex;
     flex-direction: row;
 }
 @mixin desktop-flex(){
      position: relative;
     text-align: center;
-    /* older flexbox */
-    -ms-flex: 1;
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    box-flex: 1;
-    /* newer flexbox */
+ 
     flex: 1;
 }
 @mixin label-format(){
@@ -189,7 +165,7 @@ body {
 }	
 @media (min-width: 48em) {
   #nav input.trigger:checked ~ ul, #nav input.trigger:checked ~ ul li ul {
-   @include flexbox-format();
+   @include desktop-format();
   }
 }
 #nav label {
