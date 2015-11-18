@@ -2,17 +2,7 @@
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:300');
 @import url('http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
 /* alla färger importeras*/
-/*@import "reset-color";*/
-/*reset all color*/
-/* color & position setting*/
-$background:#0080FF;
-$white: #FBFBEF;
-$darkblue:(#0101DF , 20%);
-$link-color: (#39b54a, 90%);
-$bokning: #FF4000;
-$text: #190B07;
-$font-color: #DF0101;
-$marg: 20px;
+@import "reset-color";
 /* mixin to most all funktion*/
 @mixin container-line(){
 	display:column;
@@ -38,16 +28,41 @@ $marg: 20px;
   text-decoration: none;
   border-right: 1px solid $darkblue; 
 }
-
+@mixin flexbox-format(){
+   /* older flexbox */
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    /* newer flexbox */
+    display: flex;
+    flex-direction: row;
+}
 @mixin desktop-format(){
- 
+    /* older flexbox */
+    display: -ms-flex;
+    flex-direction: -ms-row;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    /* newer flexbox */
     display: flex;
     flex-direction: row;
 }
 @mixin desktop-flex(){
      position: relative;
     text-align: center;
- 
+    /* older flexbox */
+    -ms-flex: 1;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    /* newer flexbox */
     flex: 1;
 }
 @mixin label-format(){
@@ -174,7 +189,7 @@ body {
 }	
 @media (min-width: 48em) {
   #nav input.trigger:checked ~ ul, #nav input.trigger:checked ~ ul li ul {
-   @include desktop-format();
+   @include flexbox-format();
   }
 }
 #nav label {
